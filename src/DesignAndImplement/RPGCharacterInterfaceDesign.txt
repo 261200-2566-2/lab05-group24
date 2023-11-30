@@ -1,0 +1,73 @@
+Design a RPG Character Interface
+
+    Interfaces RPGCharacter : interface สำหรับตัวละครทั้งหมด
+        String getName() : get ชื่อตัวละคร
+        int getLevel() : get เลเวลตัวละคร
+        String getJobName() : get อาชีพตัวละคร
+        void levelUp() : อัพเลเวลตัวละครทีละ 1 level และอัพเดท stats ใหม่
+        Accessory getEquippedAccessory() : get Accessory ที่ตัวละครสวมใส่อยู่
+        Equipment getEquippedEquipment() : get Equipment ที่ตัวละครสวมใส่อยู่
+        default void showCharacterInfo() : print ค่าของ name, level, job, accessory และ equipment ออกมา
+
+    Interfaces Job extends RPGCharacter :
+        String getJobName() : get อาชีพตัวละคร
+        String getAbility(int) : get Ability ลำดับที่ int ที่รับมาของอาชีพนั้นๆ
+        default void showAllAbilities() : print jobName, getAbility(1), getAbility(2); ((ตอนนี้) มี 2 สกิล)
+
+    Interface Warrior extends Job :
+        void slash() : ใช้ ability Slash ของ Warrior
+        void block() : ใช้ ability Block ของ Warrior
+        String getJobName() : return "Warrior"
+        default String getAbility(int) : return get Ability ลำดับที่ int ที่รับมา ของ Warrior {มี 1.Slash และ 2.Block}
+
+    Interface Mage extends Job :
+        void castSpell() : ใช้ ability Cast Spell ของ Mage
+        void teleport() : ใช้ ability Teleport ของ Mage
+        String getJobName() : return "Mage"
+        default String getAbility(int) : return get Ability ลำดับที่ int ที่รับมา ของ Mage {มี 1.Cast Spell และ 2.Teleport}
+
+    Interface Archer extends Job :
+        void shoot() : ใช้ ability Shot ของ Archer
+        void dodge() : ใช้ ability Dodge ของ Archer
+        String getJobName() : return "Archer"
+        default String getAbility(int) : return get Ability ลำดับที่ int ที่รับมา ของ Archer {มี 1.Shoot และ 2.Dodge}
+
+    Abstract class BaseCharacter implements RPGCharacter :
+        Variables :
+            String name : ชื่อของตัวละคร
+            int level : เลเวลของตัวละคร
+            double hp : ค่าพลังชีวิตของตัวละครปัจจุบัน
+            double maxHp : ค่าพลังชีวิตสูงสุดของตัวละคร
+            double mana : ค่ามานาของตัวละครปัจจุบัน
+            double maxMana : ค่ามานาสูงสุดของตัวละคร
+            double baseSpeed : ค่าความเร็วเริ่มต้นของตัวละคร
+            double speed : ค่าความเร็วของตัวละครปัจจุบัน
+            double maxSpeed : ค่าความเร็วสูงสุดของตัวละคร
+            MainWeapon mainHand : อาวุธมือหลักที่ตัวละครสวมใส่
+            SubWeapon subHand : อาวุธรองที่ตัวละครสวมใส่
+            Amulet amulet : สร้อยคอที่ตัวละครสวมใส่
+            Ring ring : แหวนที่ตัวละครสวมใส่
+            Earring earring : ต่างหูที่ตัวละครสวมใส่
+        Methods :
+            Constructor : initialize stats ของตัวละคร
+            void showStats() : print ค่า Stats ของตัวละคร ณ ปัจจุบัน
+            String getName() : get ชื่อตัวละคร
+            int getLevel() : get เลเวลตัวละคร
+            void levelUp() : อัพเลเวลตัวละครทีละ 1 level และอัพเดท stats ใหม่
+            void equipAccessory(Accessory) : เพิ่ม Accessory โดยการ cast ไป amulet/ring/earring ตามtype และถ้ามีของสวมใส่อยู่แล้วจะใส่แทนที่ของเดิม และคำนวนค่า Stats ตาม effectType และ effectValue ของ Accessory ที่สวมใส่
+            void equipEquipment(Equipment) : เพิ่ม Equipment โดยการ cast ไป mainHand/subHand ตามtype และถ้ามีของสวมใส่อยู่แล้วจะใส่แทนที่ของเดิม และคำนวนค่า Stats ตามอาวุธหลัก และอาวุธรองที่สวมใส่ และแต่ละอาชีพก็ใส่ของได้ไม่เหมือนกัน
+
+    class WarriorCharacter extends BaseCharacter implements Warrior :
+            Constructor : เซ็ตค่า Stats เริ่มต้นของ Warrior (super(//stats เริ่มต้นของ Warrior))
+            void slash() : ใช้ ability Slash ของ Warrior
+            void block() : ใช้ ability Block ของ Warrior
+
+    class MageCharacter extends BaseCharacter implements Mage :
+            Constructor : เซ็ตค่า Stats เริ่มต้นของ Mage (super(//stats เริ่มต้นของ Mage))
+            void castSpell() : ใช้ ability Cast Spell ของ Mage
+            void teleport() : ใช้ ability Teleport ของ Mage
+
+    class ArcherCharacter extends BaseCharacter implements Archer :
+            Constructor : เซ็ตค่า Stats เริ่มต้นของ Archer (super(//stats เริ่มต้นของ Archer))
+            void shoot() : ใช้ ability Shot ของ Archer
+            void dodge() : ใช้ ability Dodge ของ Archer

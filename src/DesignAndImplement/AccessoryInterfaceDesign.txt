@@ -1,0 +1,26 @@
+Interface Accessory
+    String getName() : get ชื่อของ Accessory
+    String getEffectType() : get ประเภทของ effect ของ Accessory
+    int getEffectValue() : get ค่าของ effect ของ Accessory
+
+Abstract class BaseAccessory implements Accessory
+    Variables :
+        String name : ชื่อของ Accessory
+        String effectType : เก็บประเภทของ effect ของ Accessory
+        int effectValue : เก็บค่า effect ที่จะมีผลกับ stats ของตัวละคร
+    Methods :
+        Constructor : initialize name, effectType, effectValue
+        String getName() : get ชื่อของ Accessory
+        String getEffectType() : get ประเภทของ effect ของ Accessory
+        int getEffectValue() : get ค่าของ effect ของ Accessory
+
+Class Amulet extends BaseAccessory :
+    Constructor : เซ็ตค่า effectType, effectValue super(//effectType, effectValue ที่รับเข้ามา)
+
+Class Ring extends BaseAccessory :
+    Constructor : เซ็ตค่า effectType, effectValue super(//effectType, effectValue ที่รับเข้ามา)
+
+Class Earring extends BaseAccessory :
+    Constructor : เซ็ตค่า effectType, effectValue super(//effectType, effectValue ที่รับเข้ามา)
+
+
