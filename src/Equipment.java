@@ -3,8 +3,9 @@ public interface Equipment {
     double getMainStat();
     int getLevel();
     void upgrade();
+
 }
-class MainWeapon implements Equipment{
+abstract class MainWeapon implements Equipment{
     private final String name;
     private int level;
     private final double baseStat;
@@ -31,7 +32,7 @@ class MainWeapon implements Equipment{
     }
 }
 
-class SubWeapon implements Equipment{
+abstract class SubWeapon implements Equipment{
     private final String name;
     private int level;
     private final double baseStat;
@@ -55,5 +56,47 @@ class SubWeapon implements Equipment{
     public void upgrade(){
         level++;
         statValue += 2.5;
+    }
+}
+
+
+class Sword extends MainWeapon{
+    public Sword(String name, int level, double baseStat) {
+        super(name, level, baseStat);
+    }
+}
+
+class  Shield extends SubWeapon{
+
+    public Shield(String name, int level, double baseStat) {
+        super(name, level, baseStat);
+    }
+}
+
+class Staff extends MainWeapon{
+
+    public Staff(String name, int level, double baseStat) {
+        super(name, level, baseStat);
+    }
+}
+
+class Charm extends SubWeapon{
+
+    public Charm(String name, int level, double baseStat) {
+        super(name, level, baseStat);
+    }
+}
+
+class Bow extends MainWeapon{
+
+    public Bow(String name, int level, double baseStat) {
+        super(name, level, baseStat);
+    }
+}
+
+class Dagger extends SubWeapon{
+
+    public Dagger(String name, int level, double baseStat) {
+        super(name, level, baseStat);
     }
 }

@@ -127,8 +127,12 @@ class WarriorCharacter extends BaseCharacter implements Warrior{
         System.out.println(getName() + " Block");
     }
     @Override
-    public void equipAccessory(Accessory accessory) {
-        super.equipAccessory(accessory);
+    public void equipEquipment(Equipment equipment) {
+        if(equipment instanceof Sword || equipment instanceof Shield){
+            super.equipEquipment(equipment);
+        }else {
+            System.out.println("Warrior can equip only Sword&Shield");
+        }
     }
 }
 class MageCharacter extends  BaseCharacter implements  Mage{
@@ -141,6 +145,15 @@ class MageCharacter extends  BaseCharacter implements  Mage{
     public void teleport() {
         System.out.println(getName() + " Teleport ");
     }
+
+    @Override
+    public void equipEquipment(Equipment equipment) {
+        if(equipment instanceof Staff || equipment instanceof Charm){
+            super.equipEquipment(equipment);
+        }else {
+            System.out.println("Mage can equip only Staff&Charm");
+        }
+    }
 }
 class ArcherCharacter extends BaseCharacter implements  Archer{
     ArcherCharacter(String name) {
@@ -151,5 +164,14 @@ class ArcherCharacter extends BaseCharacter implements  Archer{
     }
     public void dodge() {
         System.out.println(getName() + " Dodge");
+    }
+
+    @Override
+    public void equipEquipment(Equipment equipment) {
+        if(equipment instanceof Bow || equipment instanceof Dagger){
+            super.equipEquipment(equipment);
+        }else {
+            System.out.println("Archer can equip only Bow&Dagger");
+        }
     }
 }

@@ -6,7 +6,7 @@ public class Lab05 {
 
         System.out.println("======================================");
         Accessory blood = new Ring("Vampire's Ring", "Life steal", 0.155);
-        Equipment sword = new SubWeapon("James's Legacy", 30, 10);
+        Equipment sword = new Sword("James's Legacy", 30, 10);
 
         james.equipAccessory(blood);
         james.equipEquipment(sword);
@@ -23,7 +23,7 @@ public class Lab05 {
 
         blood.showStats();
         System.out.println("======================================");
-        RPGCharacter tent = new ArcherCharacter("tent");
+        RPGCharacter tent = new MageCharacter("tent");
         tent.showCharacterInfo();
         System.out.println("======================================");
         Accessory AmuletThai = new Amulet("pramaharsompong", "+Kongklang" , 1);
@@ -33,8 +33,8 @@ public class Lab05 {
         tent.equipAccessory(RingThai);
         tent.equipAccessory(EarringThai);
         System.out.println("======================================");
-        Equipment lugpharkum = new MainWeapon("lugpharkum",1000,3000);
-        Equipment karta = new SubWeapon("karta", 100, 200);
+        Equipment lugpharkum = new Charm("lugpharkum",1000,3000);
+        Equipment karta = new Staff("karta", 100, 200);
         tent.equipEquipment(lugpharkum);
         tent.equipEquipment(karta);
         System.out.println("======================================");
